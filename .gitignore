@@ -1,0 +1,56 @@
+# Cypress Environment Files (CONTAINS CREDENTIALS - DO NOT COMMIT)
+cypress.env.json
+*.env
+.env
+.env.local
+.env.production
+
+# Cypress Test Results
+cypress/videos/
+cypress/screenshots/
+cypress/reports/
+cypress/downloads/
+
+# Mochawesome Reports
+mochawesome-report/
+*.html
+*.json
+
+# Node Modules
+node_modules/
+package-lock.json
+yarn.lock
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+
+# Credentials and Secrets
+credentials.txt
+secrets.txt
+api-keys.txt
+tokens.txt
+cypress-dashboard-key.txt
+
+# Build Outputs
+dist/
+build/
+
+# Coverage Reports
+coverage/
+.nyc_output/
