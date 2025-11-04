@@ -1,14 +1,13 @@
 # 🛒 E-commerce Testing Suite with Cypress
 
-![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Page Object Model](https://img.shields.io/badge/POM-Pattern-blue?style=for-the-badge)
-![Tests](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge)
+![Cypress](https://img.shields.io/badge/Cypress-v13-brightgreen)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![Page Object Model](https://img.shields.io/badge/Pattern-Page%20Object%20Model-blue)
+![Tests](https://img.shields.io/badge/Tests-E2E%20%26%20Component-success)
 
 A comprehensive end-to-end testing suite for e-commerce applications using Cypress with Page Object Model (POM) design pattern. This project demonstrates professional test automation practices including component testing, smoke testing, and complete user journey validation.
 
 ## 📋 Table of Contents
-
 - [Overview](#overview)
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -18,7 +17,6 @@ A comprehensive end-to-end testing suite for e-commerce applications using Cypre
 - [Running Tests](#running-tests)
 - [Test Scenarios](#test-scenarios)
 - [Page Object Model](#page-object-model)
-- [CI/CD Integration](#cicd-integration)
 - [Best Practices](#best-practices)
 - [Troubleshooting](#troubleshooting)
 - [Author](#author)
@@ -74,8 +72,8 @@ cypress-ecommerce-testing/
 
 ## 🔧 Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- **Node.js** (v18 or higher recommended)
+- **npm** or **yarn**
 - Modern web browser (Chrome, Firefox, or Edge)
 
 ```bash
@@ -112,6 +110,7 @@ cp cypress.env.json.example cypress.env.json
 ```
 
 **cypress.env.json** (create this file - NOT committed):
+
 ```json
 {
   "defaultEmail": "your-email@example.com",
@@ -125,14 +124,14 @@ cp cypress.env.json.example cypress.env.json
 
 ### Environment Variables
 
-Credentials are stored in `cypress.env.json` which is **NOT** committed to version control. The template `cypress.env.json.example` shows the required structure.
+Credentials are stored in `cypress.env.json` which is NOT committed to version control. The template `cypress.env.json.example` shows the required structure.
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `defaultEmail` | Valid login email | `user@example.com` |
-| `defaultPassword` | Valid login password | `SecurePass123!` |
-| `invalidEmail` | Invalid email for negative tests | `wrong@example.com` |
-| `invalidPassword` | Invalid password for negative tests | `wrongpass` |
+| `defaultEmail` | Valid login email | user@example.com |
+| `defaultPassword` | Valid login password | SecurePass123! |
+| `invalidEmail` | Invalid email for negative tests | wrong@example.com |
+| `invalidPassword` | Invalid password for negative tests | wrongpass |
 
 ### Cypress Configuration
 
@@ -142,7 +141,6 @@ Key settings in `cypress.config.js`:
 - **Viewport**: 1280x720 (desktop)
 - **Default Timeout**: 8000ms
 - **Video Recording**: Enabled
-- **Retries**: 2 attempts in CI mode
 
 ## 🚀 Running Tests
 
@@ -153,12 +151,12 @@ Key settings in `cypress.config.js`:
 npm run cy:open
 ```
 
-Best for:
+**Best for:**
 - Test development
 - Debugging
 - Visual inspection
 
-### Headless Mode (CI/CD)
+### Headless Mode
 
 ```bash
 # Run all tests headlessly
@@ -180,16 +178,6 @@ npm run cy:run:edge
 npm run cy:run:smoke
 ```
 
-### With Dashboard Recording
-
-```bash
-# Set your Cypress Dashboard key
-export CYPRESS_RECORD_KEY=your-key-here
-
-# Run with dashboard recording
-npm run cy:run:dashboard
-```
-
 ### Clean and Run
 
 ```bash
@@ -201,7 +189,7 @@ npm run cy:run:clean
 
 ### Component Test Suite
 
-**Objective**: Validate individual UI components work correctly
+**Objective:** Validate individual UI components work correctly
 
 ```javascript
 it('Component test', function () {
@@ -224,7 +212,7 @@ it('Component test', function () {
 
 ### E2E Smoke Test Suite
 
-**Objective**: Validate complete user purchase journey
+**Objective:** Validate complete user purchase journey
 
 ```javascript
 it('e-2-e smoke test', function () {
@@ -240,25 +228,25 @@ it('e-2-e smoke test', function () {
 
 **Test Flow:**
 
-#### 1. **Product Discovery** 🔍
+#### 1. Product Discovery 🔍
 - Verify 4 products are displayed on homepage
 - Filter products by name ("MacBook")
 - Navigate to product details page
 
-#### 2. **Product Validation** ✅
+#### 2. Product Validation ✅
 - Validate product name: "MacBook"
 - Validate price: "$602.00"
 - Verify product description contains "Intel Core 2 Duo processor"
 - Check product specifications
 
-#### 3. **Review Submission** ⭐
+#### 3. Review Submission ⭐
 - Navigate to reviews tab
 - Fill review form with test data from fixtures
 - Select 5-star rating
 - Submit review
 - Validate success message
 
-#### 4. **Cart Operations** 🛒
+#### 4. Cart Operations 🛒
 - Add product to cart
 - Validate cart success message
 - Open cart dropdown menu
@@ -268,23 +256,23 @@ it('e-2-e smoke test', function () {
   - View Cart button
   - Checkout button
 
-#### 5. **Checkout Process** 💳
+#### 5. Checkout Process 💳
 - Navigate to checkout page
 - Click login link
 
-#### 6. **Authentication** 🔐
+#### 6. Authentication 🔐
 - **Negative Test**: Attempt login with invalid credentials
   - Verify warning message appears
   - Validate error message text
 - **Positive Test**: Login with valid credentials
   - Verify successful authentication
 
-#### 7. **Order Validation** ✨
+#### 7. Order Validation ✨
 - Validate checkout page loads
 - Verify order total calculations
 - Confirm all amounts are correct
 
-**Total Validations**: 20+ assertions per test run
+**Total Validations:** 20+ assertions per test run
 
 ## 🏗️ Page Object Model
 
@@ -372,8 +360,6 @@ Located in `cypress/support/commands.js`:
 | `isVisible(selector)` | Check element visibility | `cy.isVisible('.alert')` |
 | `isHidden(selector)` | Check element is hidden | `cy.isHidden('.modal')` |
 
-```
-
 ## 🎯 Best Practices Implemented
 
 ### 1. **Security**
@@ -399,12 +385,6 @@ Located in `cypress/support/commands.js`:
 ✅ Screenshot on failure  
 ✅ Descriptive test names  
 ✅ Console logging in custom commands
-
-### 5. **CI/CD Ready**
-✅ Headless mode support  
-✅ Multiple browser testing  
-✅ Dashboard integration  
-✅ Artifact upload (videos/screenshots)
 
 ## 🐛 Troubleshooting
 
@@ -439,11 +419,6 @@ defaultCommandTimeout: 10000, // Increase from 8000
 cp cypress.env.json.example cypress.env.json
 ```
 
-#### **Issue**: Tests pass locally but fail in CI
-**Solution**: Ensure GitHub Secrets are properly configured:
-- `CYPRESS_EMAIL`
-- `CYPRESS_PASSWORD`
-
 ### Debug Mode
 
 Run tests with debug output:
@@ -458,7 +433,11 @@ DEBUG=cypress:* npm run cy:run
 - [Cypress Documentation](https://docs.cypress.io/)
 - [Page Object Model Pattern](https://martinfowler.com/bliki/PageObject.html)
 - [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
-- [My Other Testing Projects](https://github.com/tyraelw?tab=repositories)
+
+### My Other Testing Projects
+
+- [Trello API Testing Suite](https://github.com/tyraelw/trello-api-testing) - REST API automation with Postman
+- [Simple Grocery Store API Testing](https://github.com/tyraelw/simple-grocery-store-api-testing) - E-commerce API testing with Postman
 
 ## 🤝 Contributing
 
@@ -480,7 +459,7 @@ This project is open source and available for educational purposes.
 
 - GitHub: [@tyraelw](https://github.com/tyraelw)
 - LinkedIn: [Isrrael Toro Alvarez](https://www.linkedin.com/in/isrrael-toro-alvarez-1019a4119/)
-- Email: tyrael78w@gmail.com
+- Email: [tyrael78w@gmail.com](mailto:tyrael78w@gmail.com)
 
 ## 📧 Contact
 
@@ -488,7 +467,8 @@ For questions, feedback, or collaboration opportunities, please reach out via [t
 
 ---
 
-⭐ If you find this project useful, please consider giving it a star on GitHub!
+⭐ **If you find this project useful, please consider giving it a star on GitHub!**
+
 
 **Related Projects:**
 - [Trello API Testing Suite](https://github.com/tyraelw/trello-api-testing) - REST API automation with Postman
